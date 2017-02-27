@@ -12,8 +12,8 @@ public class Main {
 		
 		
 		unsortedList = takeInput();
-		
-		
+		sortedList = BubbleSort.run(unsortedList);
+		System.out.println(sortedList.toString());
 		
 
 	}
@@ -39,6 +39,6 @@ public class Main {
 		}
 		return input; 
 	}
-
+	
 
 }
