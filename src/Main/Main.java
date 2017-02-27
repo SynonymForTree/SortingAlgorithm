@@ -1,7 +1,9 @@
+package Main;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+import Algorithms.BubbleSort;
+import Main.Sorts;
 
 public class Main {
 
@@ -10,15 +12,18 @@ public class Main {
 		ArrayList<Integer> unsortedList = new ArrayList<Integer>();
 		ArrayList<Integer> sortedList = new ArrayList<Integer>();
 		
-		
 		unsortedList = takeInput();
-		sortedList = BubbleSort.run(unsortedList);
-		System.out.println(sortedList.toString());
+		Sorts choice = chooseMethod();
 		
-
+		switch(choice){
+		case BubbleSort:
+			sortedList = BubbleSort.run(unsortedList);
+		}
+		
+		System.out.println(sortedList.toString());
 	}
 	
-	public static ArrayList<Integer> takeInput(){
+	private static ArrayList<Integer> takeInput(){
 		/* Method to deal with the handling of converting between Integers and an ArrayList
 		 for taking input of individual integers,
 		*/
@@ -40,5 +45,17 @@ public class Main {
 		return input; 
 	}
 	
+	public static Sorts chooseMethod(){
+	//	System.out.println
+		Sorts choice;
+		Scanner keyboard = new Scanner(System.in);
+		
+		
+		System.out.println("Select a sorting method from one of the following:");
+		System.out.println((Sorts.values()).toString());
+		choice = keyboard.nextInt();
+		
+		return Sorts.BubbleSort;
+	}
 
 }
