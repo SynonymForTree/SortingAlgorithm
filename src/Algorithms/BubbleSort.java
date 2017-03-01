@@ -4,29 +4,37 @@ import java.util.List;
 
 public class BubbleSort {
 	
+	//Used http://www.java2novice.com/java-sorting-algorithms/bubble-sort/ to help with
+	//implementing bubble sort and edited it for use with ArrayList
+	
 	public static ArrayList<Integer> run (ArrayList<Integer> input) {
 		int n = input.size();
         int k;
+        ArrayList<Integer> output = new ArrayList<Integer>();
+        output = input;
+        
         for (int m = n; m >= 0; m--) {
+        	// Loops for size of input + 1
             for (int i = 0; i < n - 1; i++) {
+            	// Loops for size of input starting at 0 to access each index
             	k = i + 1;
-            	//System.out.println("Numbers being examined are: " + input.get(i) + " " 
-            	//+ input.get(k) + " Input size is: " + input.size());
-            	
-                if (input.get(i) > input.get(k)) {
-                    swapNumbers(i, k, input);
+            	// Index of next number declared so both numbers can be accessed and compared
+                if (output.get(i) > output.get(k)) {
+                	// Swaps numbers if they are in the incorrect positions relative to each other
+                    swapNumbers(i, k, output);
                 }
             }
         }
-		return input;
+		return output;
+		
 	}
 	
 	private static void swapNumbers(int i, int j, ArrayList<Integer> input) {
-		//System.out.println("Number being swapped are: " + input.get(i) + " " + input.get(j));
 		Integer temp;
         temp = input.get(i);
         input.set(i, input.get(j));
         input.set(j, temp);
+        //Swapping positions of two numbers using a temp variable.
     }
 
 }

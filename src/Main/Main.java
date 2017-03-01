@@ -3,24 +3,37 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import Algorithms.BubbleSort;
+import Algorithms.QuickSort;
 import Main.Sorts;
 
 public class Main {
-
+	public static Sorts choice = Sorts.QuickSort;
+	//  Select which sort to run algorithm with
+	
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		ArrayList<Integer> unsortedList = new ArrayList<Integer>();
 		ArrayList<Integer> sortedList = new ArrayList<Integer>();
+		//  Declare two lists, unsorted list is kept so you can check that the same numbers are 
+		//  in the two lists
 		
 		unsortedList = takeInput();
-		Sorts choice = chooseMethod();
-		
+		// Takes input of numbers to be sorted
 		switch(choice){
+		// Runs a sorting algorithm based on what 'choice' variable is set to
 		case BubbleSort:
 			sortedList = BubbleSort.run(unsortedList);
+		case QuickSort:
+			//QuickSort implementation uses quick sort as a object
+			QuickSort sorter = new QuickSort();
+			sorter.sort(unsortedList);
+			sortedList = sorter.getList();
+			System.out.println("QuickSort");
 		}
 		
-		System.out.println(sortedList.toString());
+		
+		
+		System.out.println("List is now sorted:" + sortedList.toString());
 	}
 	
 	private static ArrayList<Integer> takeInput(){
@@ -43,19 +56,6 @@ public class Main {
 			input.add(keyboard.nextInt());
 		}
 		return input; 
-	}
-	
-	public static Sorts chooseMethod(){
-	//	System.out.println
-		Sorts choice;
-		Scanner keyboard = new Scanner(System.in);
-		
-		
-		System.out.println("Select a sorting method from one of the following:");
-		System.out.println((Sorts.values()).toString());
-		choice = keyboard.nextInt();
-		
-		return Sorts.BubbleSort;
 	}
 
 }
